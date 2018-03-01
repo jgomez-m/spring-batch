@@ -1,0 +1,35 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Datasource configuration. -->    
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <property name="poolName" value="springHikariCP" />
+        <property name="connectionTestQuery" value="${database.connection.query}" />
+        <property name="dataSourceClassName" value="${database.connection.datasource.class}" />
+        <property name="maximumPoolSize" value="${database.connection.max.pool.size}" />
+        <property name="idleTimeout" value="${database.connection.idle.timeout}" />
+
+        <property name="dataSourceProperties">
+            <props>
+                <prop key="serverName">${database.connection.host}</prop>
+                <prop key="portNumber">${database.connection.port.number}</prop>
+                <prop key="databaseName">${database.connection.name}</prop>
+                <prop key="user">${database.connection.user}</prop>
+                <prop key="password">${database.connection.password}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Datasource Initialization -->
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg ref="hikariConfig" />
+    </bean>
+
+    <!-- Transaction manager. -->
+    <bean id="transactionManager"
+          class="org.springframework.batch.support.transaction.ResourcelessTransactionManager" />
+
+</beans>
