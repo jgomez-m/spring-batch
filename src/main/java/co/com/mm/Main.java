@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 /**
  * Main Class.
  *
- * @author Manuel Mart&iacute;nez
+ * @author Julian Gomez
  */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class Main {

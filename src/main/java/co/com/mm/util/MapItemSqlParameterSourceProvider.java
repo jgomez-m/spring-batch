@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 /**
  *
- * @author ComputerGAP
+ * @author Julian Gomez
  */
 public class MapItemSqlParameterSourceProvider
         implements ItemSqlParameterSourceProvider<Map<String, Object>> {

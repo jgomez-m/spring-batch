@@ -19,7 +19,7 @@ import org.springframework.context.annotation.ImportResource;
 /**
  * Provided class to configuration.
  *
- * @author Manuel Mart&iacute;nez
+ * @author Julian Gomez
  */
 @Configuration
 /*

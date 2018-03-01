@@ -13,7 +13,7 @@ import org.springframework.validation.BindException;
 
 /**
  *
- * @author ComputerGAP
+ * @author Julian Gomez
  */
 public class MapFieldSetMapper implements FieldSetMapper<Map<String, Object>>{
 
