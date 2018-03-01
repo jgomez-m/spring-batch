@@ -30,7 +30,8 @@
                 <property name="lineTokenizer">
                     <bean
                         class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
-                        <property name="names" value="column1,column2,column3,column4,column5,column6,column7,column8,column9,column10,column11,column12,column13,column14,column15,column16,column17,column18,column19,column20" />
+                        <property name="names" value="column1,column2,column3,column4,column5" />
+                        <property name="delimiter" value="|" />
                     </bean>
                 </property>
                 <property name="fieldSetMapper">
@@ -38,7 +39,6 @@
                     <bean
                         class="co.com.mm.util.MapFieldSetMapper"/>
                 </property>
-
             </bean>
         </property>
     </bean>
@@ -46,15 +46,12 @@
     <!-- Database writer. -->
     <bean id="postgresqlItemWriter"
           class="org.springframework.batch.item.database.JdbcBatchItemWriter">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSourceMysql" />
         <property name="sql">
             <value>
             <![CDATA[
-            	INSERT INTO demo.spring_batch_test VALUES 
-                    (:column1, :column2, :column3, :column4, :column5, :column6,
-                     :column7, :column8, :column9, :column10, :column11, :column12,
-                     :column13, :column14, :column15, :column16, :column17, :column18,
-                     :column19, :column20)
+            	INSERT INTO ip_requests VALUES 
+                    (:column1, :column2, :column3, :column4, :column5)
             ]]>
             </value>
         </property>
